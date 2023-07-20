@@ -3,13 +3,21 @@ var entryList = [];
 var badList = [];
 let taskListElm = document.getElementById("good-task");
 let badtaskListElm = document.getElementById("bad-task");
+let good_hourElm = document.getElementById("good_hour");
+let bad_hourElm = document.getElementById("bad_hour");
+var ttl_good_hour = 0;
+var ttl_bad_hour = 0;
 const handleOnSubmit = (e) => {
   const form = new FormData(e);
   const task = form.get("item");
   const time = form.get("time");
   const obj = { task, time, type: "entry", id: randomString() };
-  task_list.push(obj);
-  display();
+  if (168 - (Number(obj.time) + totalhour(task_list)) < 0) {
+    alert("Time cannot exceed 168 hours");
+  } else {
+    task_list.push(obj);
+    display();
+  }
 };
 
 const display = () => {
@@ -34,6 +42,8 @@ const display = () => {
 </tr>`;
   });
   taskListElm.innerHTML = str;
+  ttl_good_hour = totalhour(entryList);
+  good_hourElm.innerHTML = ttl_good_hour;
 };
 const displayBad = () => {
   let str = "";
@@ -57,6 +67,8 @@ const displayBad = () => {
   </tr>`;
   });
   badtaskListElm.innerHTML = str;
+  ttl_bad_hour = totalhour(badList);
+  bad_hourElm.innerHTML = ttl_bad_hour;
 };
 const handleOnDelete = (id) => {
   if (window.confirm("Are you sure you want to delete this task")) {
@@ -84,4 +96,16 @@ const randomString = () => {
     str += ranStr[Math.floor(Math.random() * ranStr.length)];
   }
   return str;
+};
+
+const totalhour = (list) => {
+  var total = [];
+  let i = 0;
+  list.map((item) => {
+    total[i++] = Number(item.time);
+  });
+  var sum = total.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+  return sum;
 };
