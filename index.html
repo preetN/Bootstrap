@@ -3,9 +3,127 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DBootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Bootstrap</title>
+    <style>
+      .wrapper {
+        background: linear-gradient(#a4f8077d, #5b07f885);
+        min-height: 100vh;
+      }
+    </style>
   </head>
   <body>
-    Hello bootstrap
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col mt-5 text-center"><h1>Week planner</h1></div>
+        </div>
+        <form action="" class="mt-5 mb-5">
+          <div class="row p-5 rounded bg-light shadow-lg g-3">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Add an item"
+                aria-label="First name"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Time"
+                aria-label="Last name"
+              />
+            </div>
+            <div class="col-3 d-grid">
+              <button onclick="add_item()" class="btn btn-primary">
+                <i class="fa-solid fa-square-plus"></i> Add
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h3>Task</h3>
+            <hr>
+            <table class="table table-hover table-striped bg-opacity-25">
+              <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>coding</td>
+                    <td>5</td>
+                    <td class="text-end">
+                      <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></i>
+                      </button>
+                      <button class="btn btn-success"><i class="fa-solid fa-toggle-off"></i></i>
+                      </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>coding</td>
+                    <td>5 hrs</td>
+                    <td class="text-end">
+                      <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></i>
+                      </button>
+                      <button class="btn btn-success"><i class="fa-solid fa-toggle-off"></i></i>
+                      </button>
+                    </td>
+                </tr>
+              </tbody>
+                
+             
+            </table>
+          </div>
+          
+          <div class="col-md-6 text-center">
+            <h3>Bad list</h3>
+            <hr>
+            <table class="table table-hover table-striped bg-opacity-25">
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>coding</td>
+                  <td>5 hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></i>
+                    </button>
+                    <button class="btn btn-success"><i class="fa-solid fa-toggle-off"></i></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>coding</td>
+                    <td>5 hrs</td>
+                    <td class="text-end">
+                      <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></i>
+                      </button>
+                      <button class="btn btn-success"><i class="fa-solid fa-toggle-off"></i></i>
+                      </button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p>Total hours allocated per week = 0 hr</p>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
