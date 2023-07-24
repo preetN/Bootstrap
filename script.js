@@ -99,13 +99,8 @@ const randomString = () => {
 };
 
 const totalhour = (list) => {
-  var total = [];
-  let i = 0;
-  list.map((item) => {
-    total[i++] = Number(item.time);
-  });
-  var sum = total.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
+  var sum = list.reduce((accumulator, currentValue) => {
+    return accumulator + Number(currentValue.time);
   }, 0);
   return sum;
 };
