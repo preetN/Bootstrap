@@ -12,11 +12,15 @@ const handleOnSubmit = (e) => {
   const task = form.get("item");
   const time = form.get("time");
   const obj = { task, time, type: "entry", id: randomString() };
-  if (168 - (Number(obj.time) + totalhour(task_list)) < 0) {
-    alert("Time cannot exceed 168 hours");
+  if (Number(obj.time) <= 0) {
+    alert("Bad value for time");
   } else {
-    task_list.push(obj);
-    display();
+    if (168 - (Number(obj.time) + totalhour(task_list)) < 0) {
+      alert("Time cannot exceed 168 hours");
+    } else {
+      task_list.push(obj);
+      display();
+    }
   }
 };
 
@@ -70,6 +74,7 @@ const displayBad = () => {
   ttl_bad_hour = totalhour(badList);
   bad_hourElm.innerHTML = ttl_bad_hour;
 };
+
 const handleOnDelete = (id) => {
   if (window.confirm("Are you sure you want to delete this task")) {
     task_list = task_list.filter((item) => item.id !== id);
